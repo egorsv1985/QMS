@@ -7,16 +7,18 @@ export default {
 			blue: '#2B2B59',
 			white: '#fff',
 			dark: '#000',
-			green: '#13ce66',
-			yellow: '#ffc82c',
-			'gray-dark': '#273444',
-			gray: '#8492a6',
-			'gray-light': '#d3dce6',
 		},
 		fontFamily: {
-			lato: ['Lato', 'sans-serif'],
+			lato: ['Lato'],
 		},
-		extend: {},
+		container: {
+			center: true,
+		},
+		extend: {
+			screens: {
+				xl: '1200px',
+			},
+		},
 	},
 	plugins: [],
 }

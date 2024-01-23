@@ -17,7 +17,7 @@ export const html = () => {
 		.src(paths.src.html)
 		.pipe(plugins.changed(destination))
 		.pipe(plugins.plumber(plumberNotify('HTML')))
-		.pipe(plugins.fileInclude(fileIncludeSettings))
+		.pipe(plugins.fileInclude({ ...fileIncludeSettings, force: true }))
 		.pipe(plugins.gulpIf(isProduction, plugins.webpHTML()))
 		.pipe(plugins.replace('@img', paths.img.html))
 		.pipe(filterHTML)

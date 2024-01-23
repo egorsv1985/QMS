@@ -28,6 +28,9 @@ export const styles = () => {
 		.pipe(plugins.sourceMaps.write())
 		.pipe(filterScss)
 		.pipe(plugins.gulp.dest(cssDestination))
-		.pipe(filterScss.restore)
-		.pipe(plugins.browserSync.stream())
+		.pipe(plugins.browserSync.stream({ match: '**/*.css' }))
+		.on('end', () => {
+			// Выводим сообщение в консоль после завершения потока
+			console.log('SCSS compiled successfully')
+		})
 }

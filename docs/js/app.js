@@ -1,5 +1,12 @@
 
 
+$(document).ready(function () {
+  $(".burger").click(function () {
+    $("html").toggleClass("open");
+    return false;
+  });
+});
+
 // // Предотвращение повторной отправки форм
 // form.addEventListener('submit', () => {
 // 	submitButton.disabled = true
@@ -24,6 +31,15 @@
 //      hideLoader()
 //    }
 //   })
+
+$(document).ready(function () {
+  var e = document.querySelectorAll('input[type="tel"]');
+  jQuery(e).inputmask({
+    mask: ["+7 (999) 999 99 99", "8 (999) 999 99 99"],
+    greedy: !1,
+    placeholder: "_",
+  });
+});
 
 $(document).ready(function () {
 	// Проверяем поддержку формата WebP

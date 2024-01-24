@@ -7,6 +7,7 @@ export default {
 			blue: '#2B2B59',
 			white: '#fff',
 			dark: '#000',
+			gray: '#BFBFBF',
 		},
 		fontFamily: {
 			lato: ['Lato'],
@@ -20,5 +21,5 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require('@tailwindcss/forms')],
 }

@@ -13,15 +13,17 @@ export const html = () => {
 		restore: true,
 	})
 
-	return plugins.gulp
-		.src(paths.src.html)
-		.pipe(plugins.changed(destination))
-		.pipe(plugins.plumber(plumberNotify('HTML')))
-		.pipe(plugins.fileInclude({ ...fileIncludeSettings, force: true }))
-		.pipe(plugins.gulpIf(isProduction, plugins.webpHTML()))
-		.pipe(plugins.replace('@img', paths.img.html))
-		.pipe(filterHTML)
-		.pipe(plugins.gulp.dest(destination))
-		.pipe(filterHTML.restore)
-		.pipe(plugins.browserSync.stream())
+	return (
+		plugins.gulp
+			.src(paths.src.html)
+			// .pipe(plugins.changed(destination))
+			.pipe(plugins.plumber(plumberNotify('HTML')))
+			.pipe(plugins.fileInclude(fileIncludeSettings))
+			.pipe(plugins.gulpIf(isProduction, plugins.webpHTML()))
+			.pipe(plugins.replace('@img', paths.img.html))
+			.pipe(filterHTML)
+			.pipe(plugins.gulp.dest(destination))
+			.pipe(filterHTML.restore)
+			.pipe(plugins.browserSync.stream())
+	)
 }

@@ -53,69 +53,36 @@
           h(l);
         });
     };
-    function t() {
-      let e = document.querySelector(".submenu-open");
-      e && e.classList.remove("submenu-open");
-    }
     document.querySelector(".header").addEventListener("click", function (e) {
-      let i = e.target,
-        s = i.classList.contains("menu-item__item-title"),
-        r = i.closest(".submenu-open");
-      s && !r
-        ? (t(), i.closest(".menu-item").classList.add("submenu-open"))
-        : s && r && i.closest(".menu-item").classList.remove("submenu-open");
+      e.target.classList.contains("menu__link") && r();
     });
-    let s = !0,
-      r = (e = 500) => {
-        let t = document.querySelector("body");
-        if (s) {
-          let i = document.querySelectorAll("[data-lp]");
+    let t = !0,
+      s = (e = 500) => {
+        let i = document.querySelector("body");
+        if (t) {
+          let s = document.querySelectorAll("[data-lp]");
           setTimeout(() => {
-            for (let e = 0; e < i.length; e++) {
-              i[e].style.paddingRight = "0px";
+            for (let e = 0; e < s.length; e++) {
+              s[e].style.paddingRight = "0px";
             }
-            (t.style.paddingRight = "0px"),
+            (i.style.paddingRight = "0px"),
               document.documentElement.classList.remove("lock");
           }, e),
-            (s = !1),
+            (t = !1),
             setTimeout(function () {
-              s = !0;
+              t = !0;
             }, e);
         }
       };
+    function r() {
+      s(), document.documentElement.classList.remove("menu-open");
+    }
     function o(e) {
       setTimeout(() => {
         window.FLS && console.log(e);
       }, 0);
     }
-    let l = (e, t = !1, i = 500, s = 0) => {
-      const l = "string" == typeof e ? document.querySelector(e) : e;
-      if (l) {
-        let n = "",
-          a = 0;
-        t &&
-          ((n = "header.header"), (a = document.querySelector(n).offsetHeight));
-        let c = {
-          speedAsDuration: !0,
-          speed: i,
-          header: n,
-          offset: s,
-          easing: "easeOutQuad",
-        };
-        if (
-          (document.documentElement.classList.contains("menu-open") &&
-            (r(), document.documentElement.classList.remove("menu-open")),
-          "undefined" != typeof SmoothScroll)
-        )
-          new SmoothScroll().animateScroll(l, "", c);
-        else {
-          let e = l.getBoundingClientRect().top + scrollY;
-          window.scrollTo({ top: a ? e - a : e, behavior: "smooth" });
-        }
-        o(`[gotoBlock]: Юхуу...едем к ${e}`);
-      } else o(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${e}`);
-    };
-    let n = {
+    let l = {
       getErrors(e) {
         let t = 0,
           i = e.querySelectorAll("*[data-required]");
@@ -168,7 +135,7 @@
               const t = i[e];
               t.parentElement.classList.remove("_form-focus"),
                 t.classList.remove("_form-focus"),
-                n.removeError(t);
+                l.removeError(t);
             }
             let s = t.querySelectorAll(".checkbox__input");
             if (s.length > 0)
@@ -188,156 +155,156 @@
       emailTest: (e) =>
         !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(e.value),
     };
-    var a = i(807);
-    const c = function (e) {
+    var n = i(807);
+    const a = function (e) {
       var t = typeof e;
       return null != e && ("object" == t || "function" == t);
     };
-    const h =
+    const c =
       "object" == typeof global && global && global.Object === Object && global;
-    var d = "object" == typeof self && self && self.Object === Object && self;
-    const u = h || d || Function("return this")();
-    const p = function () {
-      return u.Date.now();
+    var h = "object" == typeof self && self && self.Object === Object && self;
+    const d = c || h || Function("return this")();
+    const u = function () {
+      return d.Date.now();
     };
-    var f = /\s/;
-    const m = function (e) {
-      for (var t = e.length; t-- && f.test(e.charAt(t)); );
+    var p = /\s/;
+    const f = function (e) {
+      for (var t = e.length; t-- && p.test(e.charAt(t)); );
       return t;
     };
     var v = /^\s+/;
-    const g = function (e) {
-      return e ? e.slice(0, m(e) + 1).replace(v, "") : e;
+    const m = function (e) {
+      return e ? e.slice(0, f(e) + 1).replace(v, "") : e;
     };
-    const b = u.Symbol;
-    var E = Object.prototype,
-      y = E.hasOwnProperty,
-      x = E.toString,
-      w = b ? b.toStringTag : void 0;
-    const S = function (e) {
-      var t = y.call(e, w),
-        i = e[w];
+    const g = d.Symbol;
+    var b = Object.prototype,
+      E = b.hasOwnProperty,
+      y = b.toString,
+      x = g ? g.toStringTag : void 0;
+    const w = function (e) {
+      var t = E.call(e, x),
+        i = e[x];
       try {
-        e[w] = void 0;
+        e[x] = void 0;
         var s = !0;
       } catch (e) {}
-      var r = x.call(e);
-      return s && (t ? (e[w] = i) : delete e[w]), r;
+      var r = y.call(e);
+      return s && (t ? (e[x] = i) : delete e[x]), r;
     };
-    var A = Object.prototype.toString;
-    const O = function (e) {
-      return A.call(e);
+    var S = Object.prototype.toString;
+    const A = function (e) {
+      return S.call(e);
     };
-    var k = b ? b.toStringTag : void 0;
-    const L = function (e) {
+    var O = g ? g.toStringTag : void 0;
+    const k = function (e) {
       return null == e
         ? void 0 === e
           ? "[object Undefined]"
           : "[object Null]"
-        : k && k in Object(e)
-          ? S(e)
-          : O(e);
+        : O && O in Object(e)
+          ? w(e)
+          : A(e);
     };
-    const W = function (e) {
+    const L = function (e) {
       return null != e && "object" == typeof e;
     };
-    const M = function (e) {
-      return "symbol" == typeof e || (W(e) && "[object Symbol]" == L(e));
+    const W = function (e) {
+      return "symbol" == typeof e || (L(e) && "[object Symbol]" == k(e));
     };
-    var N = /^[-+]0x[0-9a-f]+$/i,
-      C = /^0b[01]+$/i,
-      z = /^0o[0-7]+$/i,
-      T = parseInt;
-    const _ = function (e) {
+    var M = /^[-+]0x[0-9a-f]+$/i,
+      N = /^0b[01]+$/i,
+      C = /^0o[0-7]+$/i,
+      z = parseInt;
+    const T = function (e) {
       if ("number" == typeof e) return e;
-      if (M(e)) return NaN;
-      if (c(e)) {
+      if (W(e)) return NaN;
+      if (a(e)) {
         var t = "function" == typeof e.valueOf ? e.valueOf() : e;
-        e = c(t) ? t + "" : t;
+        e = a(t) ? t + "" : t;
       }
       if ("string" != typeof e) return 0 === e ? e : +e;
-      e = g(e);
-      var i = C.test(e);
-      return i || z.test(e) ? T(e.slice(2), i ? 2 : 8) : N.test(e) ? NaN : +e;
+      e = m(e);
+      var i = N.test(e);
+      return i || C.test(e) ? z(e.slice(2), i ? 2 : 8) : M.test(e) ? NaN : +e;
     };
-    var R = Math.max,
-      q = Math.min;
-    const D = function (e, t, i) {
+    var _ = Math.max,
+      R = Math.min;
+    const q = function (e, t, i) {
       var s,
         r,
         o,
         l,
         n,
-        a,
+        c,
         h = 0,
         d = !1,
-        u = !1,
+        p = !1,
         f = !0;
       if ("function" != typeof e) throw new TypeError("Expected a function");
-      function m(t) {
+      function v(t) {
         var i = s,
           o = r;
         return (s = r = void 0), (h = t), (l = e.apply(o, i));
       }
-      function v(e) {
-        var i = e - a;
-        return void 0 === a || i >= t || i < 0 || (u && e - h >= o);
+      function m(e) {
+        var i = e - c;
+        return void 0 === c || i >= t || i < 0 || (p && e - h >= o);
       }
       function g() {
-        var e = p();
-        if (v(e)) return b(e);
+        var e = u();
+        if (m(e)) return b(e);
         n = setTimeout(
           g,
           (function (e) {
-            var i = t - (e - a);
-            return u ? q(i, o - (e - h)) : i;
+            var i = t - (e - c);
+            return p ? R(i, o - (e - h)) : i;
           })(e),
         );
       }
       function b(e) {
-        return (n = void 0), f && s ? m(e) : ((s = r = void 0), l);
+        return (n = void 0), f && s ? v(e) : ((s = r = void 0), l);
       }
       function E() {
-        var e = p(),
-          i = v(e);
-        if (((s = arguments), (r = this), (a = e), i)) {
+        var e = u(),
+          i = m(e);
+        if (((s = arguments), (r = this), (c = e), i)) {
           if (void 0 === n)
             return (function (e) {
-              return (h = e), (n = setTimeout(g, t)), d ? m(e) : l;
-            })(a);
-          if (u) return clearTimeout(n), (n = setTimeout(g, t)), m(a);
+              return (h = e), (n = setTimeout(g, t)), d ? v(e) : l;
+            })(c);
+          if (p) return clearTimeout(n), (n = setTimeout(g, t)), v(c);
         }
         return void 0 === n && (n = setTimeout(g, t)), l;
       }
       return (
-        (t = _(t) || 0),
-        c(i) &&
+        (t = T(t) || 0),
+        a(i) &&
           ((d = !!i.leading),
-          (o = (u = "maxWait" in i) ? R(_(i.maxWait) || 0, t) : o),
+          (o = (p = "maxWait" in i) ? _(T(i.maxWait) || 0, t) : o),
           (f = "trailing" in i ? !!i.trailing : f)),
         (E.cancel = function () {
-          void 0 !== n && clearTimeout(n), (h = 0), (s = a = r = n = void 0);
+          void 0 !== n && clearTimeout(n), (h = 0), (s = c = r = n = void 0);
         }),
         (E.flush = function () {
-          return void 0 === n ? l : b(p());
+          return void 0 === n ? l : b(u());
         }),
         E
       );
     };
-    const V = function (e, t, i) {
+    const D = function (e, t, i) {
       var s = !0,
         r = !0;
       if ("function" != typeof e) throw new TypeError("Expected a function");
       return (
-        c(i) &&
+        a(i) &&
           ((s = "leading" in i ? !!i.leading : s),
           (r = "trailing" in i ? !!i.trailing : r)),
-        D(e, t, { leading: s, maxWait: t, trailing: r })
+        q(e, t, { leading: s, maxWait: t, trailing: r })
       );
     };
-    var B = function () {
+    var V = function () {
         return (
-          (B =
+          (V =
             Object.assign ||
             function (e) {
               for (var t, i = 1, s = arguments.length; i < s; i++)
@@ -345,36 +312,36 @@
                   Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r]);
               return e;
             }),
-          B.apply(this, arguments)
+          V.apply(this, arguments)
         );
       },
-      H = null,
-      j = null;
-    function I() {
-      if (null === H) {
-        if ("undefined" == typeof document) return (H = 0);
+      B = null,
+      H = null;
+    function j() {
+      if (null === B) {
+        if ("undefined" == typeof document) return (B = 0);
         var e = document.body,
           t = document.createElement("div");
         t.classList.add("simplebar-hide-scrollbar"), e.appendChild(t);
         var i = t.getBoundingClientRect().right;
-        e.removeChild(t), (H = i);
+        e.removeChild(t), (B = i);
       }
-      return H;
+      return B;
     }
-    function P(e) {
+    function I(e) {
       return e && e.ownerDocument && e.ownerDocument.defaultView
         ? e.ownerDocument.defaultView
         : window;
     }
-    function Y(e) {
+    function P(e) {
       return e && e.ownerDocument ? e.ownerDocument : document;
     }
-    a &&
+    n &&
       window.addEventListener("resize", function () {
-        j !== window.devicePixelRatio &&
-          ((j = window.devicePixelRatio), (H = null));
+        H !== window.devicePixelRatio &&
+          ((H = window.devicePixelRatio), (B = null));
       });
-    var X = function (e) {
+    var Y = function (e) {
       return Array.prototype.reduce.call(
         e,
         function (e, t) {
@@ -402,35 +369,35 @@
         {},
       );
     };
-    function F(e, t) {
+    function X(e, t) {
       var i;
       e && (i = e.classList).add.apply(i, t.split(" "));
     }
-    function $(e, t) {
+    function F(e, t) {
       e &&
         t.split(" ").forEach(function (t) {
           e.classList.remove(t);
         });
     }
-    function U(e) {
+    function $(e) {
       return ".".concat(e.split(" ").join("."));
     }
-    var Q = Object.freeze({
+    var U = Object.freeze({
         __proto__: null,
-        getElementWindow: P,
-        getElementDocument: Y,
-        getOptions: X,
-        addClasses: F,
-        removeClasses: $,
-        classNamesToQuery: U,
+        getElementWindow: I,
+        getElementDocument: P,
+        getOptions: Y,
+        addClasses: X,
+        removeClasses: F,
+        classNamesToQuery: $,
       }),
+      Q = I,
       G = P,
       Z = Y,
       J = X,
       K = F,
       ee = $,
-      te = U,
-      ie = (function () {
+      te = (function () {
         function e(t, i) {
           void 0 === i && (i = {});
           var s = this;
@@ -463,13 +430,13 @@
             (this.onStopScrolling = function () {}),
             (this.onMouseEntered = function () {}),
             (this.onScroll = function () {
-              var e = G(s.el);
+              var e = Q(s.el);
               s.scrollXTicking ||
                 (e.requestAnimationFrame(s.scrollX), (s.scrollXTicking = !0)),
                 s.scrollYTicking ||
                   (e.requestAnimationFrame(s.scrollY), (s.scrollYTicking = !0)),
                 s.isScrolling ||
-                  ((s.isScrolling = !0), K(s.el, s.classNames.scrolling)),
+                  ((s.isScrolling = !0), J(s.el, s.classNames.scrolling)),
                 s.showScrollbar("x"),
                 s.showScrollbar("y"),
                 s.onStopScrolling();
@@ -483,21 +450,21 @@
                 (s.scrollYTicking = !1);
             }),
             (this._onStopScrolling = function () {
-              ee(s.el, s.classNames.scrolling),
+              K(s.el, s.classNames.scrolling),
                 s.options.autoHide &&
                   (s.hideScrollbar("x"), s.hideScrollbar("y")),
                 (s.isScrolling = !1);
             }),
             (this.onMouseEnter = function () {
               s.isMouseEntering ||
-                (K(s.el, s.classNames.mouseEntered),
+                (J(s.el, s.classNames.mouseEntered),
                 s.showScrollbar("x"),
                 s.showScrollbar("y"),
                 (s.isMouseEntering = !0)),
                 s.onMouseEntered();
             }),
             (this._onMouseEntered = function () {
-              ee(s.el, s.classNames.mouseEntered),
+              K(s.el, s.classNames.mouseEntered),
                 s.options.autoHide &&
                   (s.hideScrollbar("x"), s.hideScrollbar("y")),
                 (s.isMouseEntering = !1);
@@ -558,7 +525,7 @@
               var i, r, o, l, n, a, c, h, d, u, p;
               if (s.draggedAxis && s.contentWrapperEl) {
                 var f = s.axis[s.draggedAxis].track,
-                  m =
+                  v =
                     null !==
                       (r =
                         null === (i = f.rect) || void 0 === i
@@ -566,7 +533,7 @@
                           : i[s.axis[s.draggedAxis].sizeAttr]) && void 0 !== r
                       ? r
                       : 0,
-                  v = s.axis[s.draggedAxis].scrollbar,
+                  m = s.axis[s.draggedAxis].scrollbar,
                   g =
                     null !==
                       (l =
@@ -608,10 +575,10 @@
                           void 0 !== u
                             ? u
                             : 0) -
-                          v.size -
+                          m.size -
                           E
                         : E) /
-                      (m - v.size)) *
+                      (v - m.size)) *
                     (g - b);
                 "x" === s.draggedAxis &&
                   s.isRtl &&
@@ -627,11 +594,11 @@
               }
             }),
             (this.onEndDrag = function (e) {
-              var t = Z(s.el),
-                i = G(s.el);
+              var t = G(s.el),
+                i = Q(s.el);
               e.preventDefault(),
                 e.stopPropagation(),
-                ee(s.el, s.classNames.dragging),
+                K(s.el, s.classNames.dragging),
                 t.removeEventListener("mousemove", s.drag, !0),
                 t.removeEventListener("mouseup", s.onEndDrag, !0),
                 (s.removePreventClickId = i.setTimeout(function () {
@@ -644,9 +611,9 @@
               e.preventDefault(), e.stopPropagation();
             }),
             (this.el = t),
-            (this.options = B(B({}, e.defaultOptions), i)),
-            (this.classNames = B(
-              B({}, e.defaultOptions.classNames),
+            (this.options = V(V({}, e.defaultOptions), i)),
+            (this.classNames = V(
+              V({}, e.defaultOptions.classNames),
               i.classNames,
             )),
             (this.axis = {
@@ -684,15 +651,15 @@
                 this.el,
               ),
             );
-          (this.onMouseMove = V(this._onMouseMove, 64)),
-            (this.onWindowResize = D(this._onWindowResize, 64, {
+          (this.onMouseMove = D(this._onMouseMove, 64)),
+            (this.onWindowResize = q(this._onWindowResize, 64, {
               leading: !0,
             })),
-            (this.onStopScrolling = D(
+            (this.onStopScrolling = q(
               this._onStopScrolling,
               this.stopScrollDelay,
             )),
-            (this.onMouseEntered = D(
+            (this.onMouseEntered = q(
               this._onMouseEntered,
               this.stopScrollDelay,
             )),
@@ -730,22 +697,22 @@
                 "scrollbarWidth" in document.documentElement.style ||
                 "-ms-overflow-style" in document.documentElement.style
                 ? 0
-                : I();
+                : j();
             } catch (e) {
-              return I();
+              return j();
             }
           }),
           (e.getOffset = function (e) {
             var t = e.getBoundingClientRect(),
-              i = Z(e),
-              s = G(e);
+              i = G(e),
+              s = Q(e);
             return {
               top: t.top + (s.pageYOffset || i.documentElement.scrollTop),
               left: t.left + (s.pageXOffset || i.documentElement.scrollLeft),
             };
           }),
           (e.prototype.init = function () {
-            a &&
+            n &&
               (this.initDOM(),
               (this.rtlHelpers = e.getRtlHelpers()),
               (this.scrollbarWidth = this.getScrollbarWidth()),
@@ -755,56 +722,56 @@
           (e.prototype.initDOM = function () {
             var e, t;
             (this.wrapperEl = this.el.querySelector(
-              te(this.classNames.wrapper),
+              ee(this.classNames.wrapper),
             )),
               (this.contentWrapperEl =
                 this.options.scrollableNode ||
-                this.el.querySelector(te(this.classNames.contentWrapper))),
+                this.el.querySelector(ee(this.classNames.contentWrapper))),
               (this.contentEl =
                 this.options.contentNode ||
-                this.el.querySelector(te(this.classNames.contentEl))),
+                this.el.querySelector(ee(this.classNames.contentEl))),
               (this.offsetEl = this.el.querySelector(
-                te(this.classNames.offset),
+                ee(this.classNames.offset),
               )),
-              (this.maskEl = this.el.querySelector(te(this.classNames.mask))),
+              (this.maskEl = this.el.querySelector(ee(this.classNames.mask))),
               (this.placeholderEl = this.findChild(
                 this.wrapperEl,
-                te(this.classNames.placeholder),
+                ee(this.classNames.placeholder),
               )),
               (this.heightAutoObserverWrapperEl = this.el.querySelector(
-                te(this.classNames.heightAutoObserverWrapperEl),
+                ee(this.classNames.heightAutoObserverWrapperEl),
               )),
               (this.heightAutoObserverEl = this.el.querySelector(
-                te(this.classNames.heightAutoObserverEl),
+                ee(this.classNames.heightAutoObserverEl),
               )),
               (this.axis.x.track.el = this.findChild(
                 this.el,
                 ""
-                  .concat(te(this.classNames.track))
-                  .concat(te(this.classNames.horizontal)),
+                  .concat(ee(this.classNames.track))
+                  .concat(ee(this.classNames.horizontal)),
               )),
               (this.axis.y.track.el = this.findChild(
                 this.el,
                 ""
-                  .concat(te(this.classNames.track))
-                  .concat(te(this.classNames.vertical)),
+                  .concat(ee(this.classNames.track))
+                  .concat(ee(this.classNames.vertical)),
               )),
               (this.axis.x.scrollbar.el =
                 (null === (e = this.axis.x.track.el) || void 0 === e
                   ? void 0
-                  : e.querySelector(te(this.classNames.scrollbar))) || null),
+                  : e.querySelector(ee(this.classNames.scrollbar))) || null),
               (this.axis.y.scrollbar.el =
                 (null === (t = this.axis.y.track.el) || void 0 === t
                   ? void 0
-                  : t.querySelector(te(this.classNames.scrollbar))) || null),
+                  : t.querySelector(ee(this.classNames.scrollbar))) || null),
               this.options.autoHide ||
-                (K(this.axis.x.scrollbar.el, this.classNames.visible),
-                K(this.axis.y.scrollbar.el, this.classNames.visible));
+                (J(this.axis.x.scrollbar.el, this.classNames.visible),
+                J(this.axis.y.scrollbar.el, this.classNames.visible));
           }),
           (e.prototype.initListeners = function () {
             var e,
               t = this,
-              i = G(this.el);
+              i = Q(this.el);
             if (
               (this.el.addEventListener("mouseenter", this.onMouseEnter),
               this.el.addEventListener("pointerdown", this.onPointerEvent, !0),
@@ -851,7 +818,7 @@
               this.wrapperEl &&
               this.placeholderEl
             ) {
-              var e = G(this.el);
+              var e = Q(this.el);
               (this.elStyles = e.getComputedStyle(this.el)),
                 (this.isRtl = "rtl" === this.elStyles.direction);
               var t = this.contentEl.offsetWidth,
@@ -1011,14 +978,14 @@
             void 0 === e && (e = "y"),
               this.axis[e].isOverflowing &&
                 !this.axis[e].scrollbar.isVisible &&
-                (K(this.axis[e].scrollbar.el, this.classNames.visible),
+                (J(this.axis[e].scrollbar.el, this.classNames.visible),
                 (this.axis[e].scrollbar.isVisible = !0));
           }),
           (e.prototype.hideScrollbar = function (e) {
             void 0 === e && (e = "y"),
               this.axis[e].isOverflowing &&
                 this.axis[e].scrollbar.isVisible &&
-                (ee(this.axis[e].scrollbar.el, this.classNames.visible),
+                (K(this.axis[e].scrollbar.el, this.classNames.visible),
                 (this.axis[e].scrollbar.isVisible = !1));
           }),
           (e.prototype.hideNativeScrollbar = function () {
@@ -1041,24 +1008,24 @@
               (t.scrollbar.rect = t.scrollbar.el.getBoundingClientRect()),
               this.isWithinBounds(t.track.rect)
                 ? (this.showScrollbar(e),
-                  K(t.track.el, this.classNames.hover),
+                  J(t.track.el, this.classNames.hover),
                   this.isWithinBounds(t.scrollbar.rect)
-                    ? K(t.scrollbar.el, this.classNames.hover)
-                    : ee(t.scrollbar.el, this.classNames.hover))
-                : (ee(t.track.el, this.classNames.hover),
+                    ? J(t.scrollbar.el, this.classNames.hover)
+                    : K(t.scrollbar.el, this.classNames.hover))
+                : (K(t.track.el, this.classNames.hover),
                   this.options.autoHide && this.hideScrollbar(e)));
           }),
           (e.prototype.onMouseLeaveForAxis = function (e) {
             void 0 === e && (e = "y"),
-              ee(this.axis[e].track.el, this.classNames.hover),
-              ee(this.axis[e].scrollbar.el, this.classNames.hover),
+              K(this.axis[e].track.el, this.classNames.hover),
+              K(this.axis[e].scrollbar.el, this.classNames.hover),
               this.options.autoHide && this.hideScrollbar(e);
           }),
           (e.prototype.onDragStart = function (e, t) {
             var i;
             void 0 === t && (t = "y");
-            var s = Z(this.el),
-              r = G(this.el),
+            var s = G(this.el),
+              r = Q(this.el),
               o = this.axis[t].scrollbar,
               l = "y" === t ? e.pageY : e.pageX;
             (this.axis[t].dragOffset =
@@ -1067,7 +1034,7 @@
                 ? void 0
                 : i[this.axis[t].offsetAttr]) || 0)),
               (this.draggedAxis = t),
-              K(this.el, this.classNames.dragging),
+              J(this.el, this.classNames.dragging),
               s.addEventListener("mousemove", this.drag, !0),
               s.addEventListener("mouseup", this.onEndDrag, !0),
               null === this.removePreventClickId
@@ -1090,7 +1057,7 @@
               this.contentWrapperEl
             ) {
               e.preventDefault();
-              var a = G(this.el);
+              var a = Q(this.el);
               this.axis[t].scrollbar.rect =
                 n.scrollbar.el.getBoundingClientRect();
               var c =
@@ -1137,7 +1104,7 @@
             return this.contentWrapperEl;
           }),
           (e.prototype.removeListeners = function () {
-            var e = G(this.el);
+            var e = Q(this.el);
             this.el.removeEventListener("mouseenter", this.onMouseEnter),
               this.el.removeEventListener(
                 "pointerdown",
@@ -1212,14 +1179,14 @@
             contentNode: null,
             autoHide: !0,
           }),
-          (e.getOptions = J),
-          (e.helpers = Q),
+          (e.getOptions = Z),
+          (e.helpers = U),
           e
         );
       })(),
-      se = function (e, t) {
+      ie = function (e, t) {
         return (
-          (se =
+          (ie =
             Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array &&
               function (e, t) {
@@ -1229,13 +1196,13 @@
               for (var i in t)
                 Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
             }),
-          se(e, t)
+          ie(e, t)
         );
       };
-    var re = ie.helpers,
-      oe = re.getOptions,
-      le = re.addClasses,
-      ne = (function (e) {
+    var se = te.helpers,
+      re = se.getOptions,
+      oe = se.addClasses,
+      le = (function (e) {
         function t() {
           for (var i = [], s = 0; s < arguments.length; s++)
             i[s] = arguments[s];
@@ -1253,7 +1220,7 @@
             function i() {
               this.constructor = e;
             }
-            se(e, t),
+            ie(e, t),
               (e.prototype =
                 null === t
                   ? Object.create(t)
@@ -1270,7 +1237,7 @@
                 function (e) {
                   "init" === e.getAttribute("data-simplebar") ||
                     t.instances.has(e) ||
-                    new t(e, oe(e.attributes));
+                    new t(e, re(e.attributes));
                 },
               );
           }),
@@ -1298,17 +1265,17 @@
                   this.heightAutoObserverWrapperEl =
                     document.createElement("div"),
                   this.heightAutoObserverEl = document.createElement("div"),
-                  le(this.wrapperEl, this.classNames.wrapper),
-                  le(this.contentWrapperEl, this.classNames.contentWrapper),
-                  le(this.offsetEl, this.classNames.offset),
-                  le(this.maskEl, this.classNames.mask),
-                  le(this.contentEl, this.classNames.contentEl),
-                  le(this.placeholderEl, this.classNames.placeholder),
-                  le(
+                  oe(this.wrapperEl, this.classNames.wrapper),
+                  oe(this.contentWrapperEl, this.classNames.contentWrapper),
+                  oe(this.offsetEl, this.classNames.offset),
+                  oe(this.maskEl, this.classNames.mask),
+                  oe(this.contentEl, this.classNames.contentEl),
+                  oe(this.placeholderEl, this.classNames.placeholder),
+                  oe(
                     this.heightAutoObserverWrapperEl,
                     this.classNames.heightAutoObserverWrapperEl,
                   ),
-                  le(
+                  oe(
                     this.heightAutoObserverEl,
                     this.classNames.heightAutoObserverEl,
                   );
@@ -1339,21 +1306,21 @@
             if (!this.axis.x.track.el || !this.axis.y.track.el) {
               var r = document.createElement("div"),
                 o = document.createElement("div");
-              le(r, this.classNames.track),
-                le(o, this.classNames.scrollbar),
+              oe(r, this.classNames.track),
+                oe(o, this.classNames.scrollbar),
                 r.appendChild(o),
                 (this.axis.x.track.el = r.cloneNode(!0)),
-                le(this.axis.x.track.el, this.classNames.horizontal),
+                oe(this.axis.x.track.el, this.classNames.horizontal),
                 (this.axis.y.track.el = r.cloneNode(!0)),
-                le(this.axis.y.track.el, this.classNames.vertical),
+                oe(this.axis.y.track.el, this.classNames.vertical),
                 this.el.appendChild(this.axis.x.track.el),
                 this.el.appendChild(this.axis.y.track.el);
             }
-            ie.prototype.initDOM.call(this),
+            te.prototype.initDOM.call(this),
               this.el.setAttribute("data-simplebar", "init");
           }),
           (t.prototype.unMount = function () {
-            ie.prototype.unMount.call(this), t.instances.delete(this.el);
+            te.prototype.unMount.call(this), t.instances.delete(this.el);
           }),
           (t.initHtmlApi = function () {
             (this.initDOMLoadedElements =
@@ -1383,14 +1350,14 @@
                   (e.hasAttribute("data-simplebar")
                     ? !t.instances.has(e) &&
                       document.documentElement.contains(e) &&
-                      new t(e, oe(e.attributes))
+                      new t(e, re(e.attributes))
                     : e
                         .querySelectorAll("[data-simplebar]")
                         .forEach(function (e) {
                           "init" !== e.getAttribute("data-simplebar") &&
                             !t.instances.has(e) &&
                             document.documentElement.contains(e) &&
-                            new t(e, oe(e.attributes));
+                            new t(e, re(e.attributes));
                         }));
               }),
                 e.removedNodes.forEach(function (e) {
@@ -1413,11 +1380,11 @@
           (t.instances = new WeakMap()),
           t
         );
-      })(ie);
-    a && ne.initHtmlApi(),
+      })(te);
+    n && le.initHtmlApi(),
       document.querySelectorAll("[data-simplebar]").length &&
         document.querySelectorAll("[data-simplebar]").forEach((e) => {
-          new ne(e, { autoHide: !1 });
+          new le(e, { autoHide: !1 });
         }),
       (window.FLS = !0),
       (function (e) {
@@ -1441,7 +1408,7 @@
         let e = document.querySelector(".burger");
         e &&
           e.addEventListener("click", function (e) {
-            s && (t(), document.documentElement.classList.toggle("menu-open"));
+            t && document.documentElement.classList.toggle("menu-open");
           });
       })(),
       (function () {
@@ -1458,7 +1425,7 @@
               (t.dataset.placeholder && (t.placeholder = ""),
               t.classList.add("_form-focus"),
               t.parentElement.classList.add("_form-focus"),
-              n.removeError(t));
+              l.removeError(t));
           }),
           document.body.addEventListener("focusout", function (e) {
             const t = e.target;
@@ -1466,7 +1433,7 @@
               (t.dataset.placeholder && (t.placeholder = t.dataset.placeholder),
               t.classList.remove("_form-focus"),
               t.parentElement.classList.remove("_form-focus"),
-              t.hasAttribute("data-validate") && n.validateInput(t));
+              t.hasAttribute("data-validate") && l.validateInput(t));
           });
       })(),
       (function (t) {
@@ -1479,10 +1446,10 @@
             }),
               e.addEventListener("reset", function (e) {
                 const t = e.target;
-                n.formClean(t);
+                l.formClean(t);
               });
         async function s(e, i) {
-          if (0 === (t ? n.getErrors(e) : 0)) {
+          if (0 === (t ? l.getErrors(e) : 0)) {
             if (e.hasAttribute("data-ajax")) {
               i.preventDefault();
               const t = e.getAttribute("action")
@@ -1491,21 +1458,51 @@
                 s = e.getAttribute("method")
                   ? e.getAttribute("method").trim()
                   : "GET",
-                o = new FormData(e);
+                r = new FormData(e);
               e.classList.add("_sending");
-              const l = await fetch(t, { method: s, body: o });
-              if (l.ok) {
-                await l.json();
-                e.classList.remove("_sending"), r(e);
+              const o = await fetch(t, { method: s, body: r });
+              if (o.ok) {
+                await o.json();
+                e.classList.remove("_sending"), n(e);
               } else alert("Ошибка"), e.classList.remove("_sending");
-            } else e.hasAttribute("data-dev") && (i.preventDefault(), r(e));
+            } else e.hasAttribute("data-dev") && (i.preventDefault(), n(e));
           } else {
             i.preventDefault();
             const t = e.querySelector("._form-error");
-            t && e.hasAttribute("data-goto-error") && l(t, !0, 1e3);
+            t &&
+              e.hasAttribute("data-goto-error") &&
+              ((e, t = !1, i = 500, s = 0) => {
+                const l = "string" == typeof e ? document.querySelector(e) : e;
+                if (l) {
+                  let n = "",
+                    a = 0;
+                  t &&
+                    ((n = "header.header"),
+                    (a = document.querySelector(n).offsetHeight));
+                  let c = {
+                    speedAsDuration: !0,
+                    speed: i,
+                    header: n,
+                    offset: s,
+                    easing: "easeOutQuad",
+                  };
+                  if (
+                    (document.documentElement.classList.contains("menu-open") &&
+                      r(),
+                    "undefined" != typeof SmoothScroll)
+                  )
+                    new SmoothScroll().animateScroll(l, "", c);
+                  else {
+                    let e = l.getBoundingClientRect().top + scrollY;
+                    window.scrollTo({ top: a ? e - a : e, behavior: "smooth" });
+                  }
+                  o(`[gotoBlock]: Юхуу...едем к ${e}`);
+                } else
+                  o(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${e}`);
+              })(t, !0, 1e3);
           }
         }
-        function r(t) {
+        function n(t) {
           document.dispatchEvent(
             new CustomEvent("formSent", { detail: { form: t } }),
           ),
@@ -1515,7 +1512,7 @@
                 i && e.popup.open(i);
               }
             }, 0),
-            n.formClean(t),
+            l.formClean(t),
             o(`[Формы]: ${"Форма отправлена!"}`);
         }
       })(!0);

@@ -144,24 +144,24 @@ h6 {
   margin: 0 auto;
   padding: 0 15px;
 }
-@media (min-width: 767.98px) {
+@media (min-width: 1920px) {
   [class*=__container] {
-    padding: 0 15px;
+    padding-left: 17rem;
   }
 }
-@media (min-width: 991.98px) {
+@media (min-width: 1280px) and (max-width: 1920px) {
   [class*=__container] {
-    padding: 0 40px;
+    padding-left: clamp( 7rem , -13rem  +  15.625vw , 17rem );
   }
 }
-@media (min-width: 1279.98px) {
+@media (min-width: 1920px) {
   [class*=__container] {
-    padding: 0 120px;
+    padding-right: 17rem;
   }
 }
-@media (min-width: 1700px) {
+@media (min-width: 1280px) and (max-width: 1920px) {
   [class*=__container] {
-    padding: 0 170px;
+    padding-right: clamp( 7rem , -13rem  +  15.625vw , 17rem );
   }
 }
 
@@ -237,7 +237,7 @@ h2 {
 @media (min-width: 1699.98px) {
   h1,
   h2 {
-    max-width: 1440px;
+    max-width: 1380px;
     font-size: 10.2rem;
     font-weight: 700;
   }
@@ -255,7 +255,7 @@ h2 {
   justify-content: space-between;
   gap: 20px;
 }
-@media (min-width: 991.98px) {
+@media (min-width: 1279.98px) {
   .header__container {
     gap: 50px;
   }
@@ -285,13 +285,14 @@ h2 {
   }
 }
 .logo__text {
-  max-width: 153px;
+  max-width: 110px;
   color: #000000;
   line-height: 1;
   font-size: 1.6rem;
 }
 @media (min-width: 1699.98px) {
   .logo__text {
+    max-width: 153px;
     font-size: 2.1rem;
   }
 }
@@ -333,17 +334,12 @@ h2 {
     row-gap: 20px;
   }
 }
-@media (min-width: 1279.98px) {
-  .menu__list {
-    column-gap: 40px;
-  }
-}
-@media (min-width: 1279.98px) {
-  .menu__list {
-    column-gap: 60px;
-  }
-}
 @media (min-width: 1699.98px) {
+  .menu__list {
+    column-gap: 35px;
+  }
+}
+@media (min-width: 1850px) {
   .menu__list {
     column-gap: 85px;
   }
@@ -537,11 +533,6 @@ h2 {
     font-size: 2rem;
   }
 }
-@media (min-width: 1699.98px) {
-  .footer__text {
-    font-weight: 700;
-  }
-}
 
 @media (min-width: 1620px) {
   .page {
@@ -562,8 +553,7 @@ h2 {
   position: absolute;
   position: fixed;
   left: 50%;
-  transform: translateX(12%);
-  top: 65px;
+  transform: translateX(20%);
   z-index: -1;
   opacity: 0.5;
   display: none;
@@ -575,7 +565,7 @@ h2 {
 }
 @media (min-width: 1280px) and (max-width: 1920px) {
   .canvas__item {
-    max-width: clamp( 70rem , 40rem  +  23.4375vw , 85rem );
+    max-width: clamp( 64rem , 22rem  +  32.8125vw , 85rem );
   }
 }
 @media (min-width: 1279.98px) {
@@ -583,6 +573,11 @@ h2 {
     display: block;
     width: 61%;
     aspect-ratio: 1/1;
+  }
+}
+@media (min-width: 1439.98px) {
+  .canvas__item {
+    transform: translateX(5%);
   }
 }
 @media (min-width: 1699.98px) {
